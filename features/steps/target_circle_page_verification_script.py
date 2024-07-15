@@ -15,17 +15,17 @@ def circle_page_is_loaded(context):
 
 @then ('Verify green section has 6 benefit cells')
 def green_benefit_cells_are_verified(context):
-    context.driver.find_elements(By.CSS_SELECTOR, ".Join Circle")
+    context.driver.find_elements(By.XPATH, "//a[@data-lnk='Join Circle ']")
     # Join Target Circle
-    context.driver.find_elements(By.CSS_SELECTOR, ".Circle Deals")
+    context.driver.find_elements(By.XPATH, "//a[@data-lnk='Circle Deals ']")
     # See today's Target Circle deals
-    context.driver.find_elements(By.CSS_SELECTOR, ".Bonus")
+    context.driver.find_elements(By.XPATH, "//a[@data-lnk='Bonus']")
     # Target Circle Bonuses
-    context.driver.find_elements(By.CSS_SELECTOR, ".Partner")
+    context.driver.find_elements(By.XPATH, "//a[@data-lnk='Partner']")
     # Target Circle Partners
-    context.driver.find_elements(By.CSS_SELECTOR, ".Voting")
+    context.driver.find_elements(By.XPATH, "//a[@data-lnk='Voting']")
     # Community support votes
-    context.driver.find_elements(By.CSS_SELECTOR, ".Circe FAQs")
+    context.driver.find_elements(By.XPATH, "//a[@data-lnk='Circe FAQs']")
     # Learn more about the loyalty program.
 
 @then ('Verify red section has 2 benefit cells')

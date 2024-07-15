@@ -17,7 +17,7 @@ def add_to_cart(context):
 @then('Verify product has been added to cart')
 def verify_product(context):
     # click on view cart & check out
-    context.driver.find_elements(By.XPATH, "//href[@text()='View cart & check out']")
-    sleep(1)
+    context.driver.find_element(By.XPATH, "//a[@href='/cart']").click()
+    sleep(3)
     # total price check
-    context.driver.find_elements(By.XPATH, "//class[@text()='$38.50 total']")
+    context.driver.find_element(By.XPATH, "//div[@data-test='cartItem-title']")
