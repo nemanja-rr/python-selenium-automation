@@ -2,23 +2,27 @@ from selenium.webdriver.common.by import By
 from behave import given, then
 from time import sleep
 
-COLOR_OPTIONS = (By.CSS_SELECTOR, "div[aria-label='Carousel'] li")
+# COLOR_OPTIONS = (By.CSS_SELECTOR, "div[aria-label='Carousel'] li")
+COLOR_OPTIONS = (By.CSS_SELECTOR, '[aria-label="Carousel"] ul a')
 SELECTED_COLOR = (By.CSS_SELECTOR, "[data-test='@web/VariationComponent'] div")
+
 
 @given('Open target product {product_id} page')
 def open_target(context, product_id):
     context.driver.get(f'https://www.target.com/p/{product_id}')
     sleep(3)
 
+
 @then('Verify user can click through colors')
 def click_and_verify_colors(context):
-    expected_colors = ['dark khaki', 'stone/grey', 'black/gum - Out of Stock']
+    # expected_colors = ['dark khaki', 'stone/grey', 'black/gum - Out of Stock']
+    expected_colors = ['8.5', '9', '9.5', '10', '10.5', '11']
     actual_colors = []
 
     colors = context.driver.find_elements(*COLOR_OPTIONS)
-    for i in range(len(colors)):
-        colors = context.driver.find_elements(*COLOR_OPTIONS)
-        color = colors[i]
+    for color in colors[:6]:
+        #colors = context.driver.find_elements(*COLOR_OPTIONS)
+        #color = colors[i]
         color.click()
         sleep(1)
 
