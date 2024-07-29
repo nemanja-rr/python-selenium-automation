@@ -8,17 +8,19 @@ HEADER_TEXT = (By.XPATH, "//div[@data-test='resultsHeading']")
 
 @given('Open target home page')
 def open_target_home_page(context):
-    context.driver.get('https://www.target.com/')
+    context.app.main_page.open()
+    # context.driver.get('https://www.target.com/')
 
 
 @when('Search for product')
 def search_for_product(context):
-    # find search field and enter text
-    context.driver.find_element(By.ID, 'search').send_keys('pikachu sleeping')
-    # click search
-    context.driver.find_element(By.XPATH, "//button[@data-test='@web/Search/SearchButton']").click()
-    # wait for the page with search results to load
-    context.wait.until(EC.visibility_of_element_located(HEADER_TEXT))
+    context.app.header.search()
+    # # find search field and enter text
+    # context.driver.find_element(By.ID, 'search').send_keys('pikachu sleeping')
+    # # click search
+    # context.driver.find_element(By.XPATH, "//button[@data-test='@web/Search/SearchButton']").click()
+    # # wait for the page with search results to load
+    # context.wait.until(EC.visibility_of_element_located(HEADER_TEXT))
 
 @then('Verify search worked')
 def verify_search_worked(context):

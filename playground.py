@@ -12,8 +12,20 @@ class Page:
 
 
 class LoginPage(Page):
+    def login(self):
+        self.input_text('email')
+        self.input_text('password')
+        self.click()
 
+class SignUpPage(Page):
     pass
 
-login_page = LoginPage
+login_page = LoginPage()
 login_page.click()
+login_page.login()
+
+
+
+
+# sign_up_page = SignUpPage()
+# sign_up_page
