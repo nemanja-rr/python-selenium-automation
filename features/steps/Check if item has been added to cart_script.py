@@ -1,4 +1,5 @@
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from behave import given, when, then
 from time import sleep
@@ -20,6 +21,7 @@ def add_to_cart(context):
     context.driver.find_element(By.ID, 'addToCartButtonOrTextIdFor79832816').click()
     # wait for side navigation to pop-out
     context.wait.until(EC.visibility_of_element_located(VIEW_CART_CHECKOUT))
+
 @then('Verify product has been added to cart')
 def verify_product(context):
     # click on view cart & check out
