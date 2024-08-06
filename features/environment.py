@@ -1,15 +1,12 @@
 import sys
-
 from selenium import webdriver
+from selenium.webdriver.chrome import options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.support.wait import WebDriverWait
-
 from app.application import Application
-
 from time import sleep
-
 
 
 def browser_init(context):
@@ -20,11 +17,35 @@ def browser_init(context):
     service = Service(driver_path)
     context.driver = webdriver.Chrome(service=service)
 
+    # # HEADLESS MODE ####
+    # options = webdriver.ChromeOptions()
+    # options.add_argument('headless')
+    # driver_path = './chromedriver'  # for macOS users
+    # service = Service(driver_path)
+    # context.driver = webdriver.Chrome(
+    #     options=options,
+    #     service=service
+    # )
+
     context.driver.maximize_window()
     context.driver.implicitly_wait(4)
     context.wait = WebDriverWait(context.driver, 10)
 
     context.app = Application(context.driver)
+
+
+
+# def before_all(context):
+#     options = webdriver.ChromeOptions()
+#     options.add_argument('headless')
+#     service = Service(ChromeDriverManager().install())
+#     context.driver = webdriver.Chrome(options=options, service=service)
+#     context.driver.maximize_window()
+#     context.driver.implicitly_wait(10)
+#     context.app = Application(context.driver)
+
+# def after_all(context):
+#     context.driver.quit()
 
 
 def before_scenario(context, scenario):
